@@ -30,7 +30,7 @@ class Api {
     }
 
     if (params.parameters !== null || params.parameters !== 'undefined') {
-      getItemsRequest.Resources = params.parameters
+      getItemsRequest.Resources = params.resources
     }
 
     if (params.condition !== null || params.condition !== 'undefined') {
@@ -75,7 +75,7 @@ class Api {
     }
 
     if (params.parameters !== null || params.parameters !== 'undefined') {
-      getBrowseNodesRequest.Resources = params.parameters
+      getBrowseNodesRequest.Resources = params.resources
     }
 
     return new Promise((resolve, reject) => {
@@ -117,7 +117,7 @@ class Api {
     }
 
     if (params.parameters !== null || params.parameters !== 'undefined') {
-      getVariationsRequest.Resources = params.parameters
+      getVariationsRequest.Resources = params.resources
     }
     if (params.condition !== null || params.condition !== 'undefined') {
       getVariationsRequest.Condition = params.condition
@@ -162,7 +162,7 @@ class Api {
     }
 
     if (params.parameters !== null || params.parameters !== 'undefined') {
-      getSearchItemsRequest.Resources = params.parameters
+      getSearchItemsRequest.Resources = params.resources
     }
     if (params.searchIndex !== null || params.searchIndex !== 'undefined') {
       getSearchItemsRequest.SearchIndex = params.searchIndex
