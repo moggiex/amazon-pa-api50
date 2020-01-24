@@ -29,8 +29,8 @@ class Api {
       ItemIds: ids
     }
 
-    if (params.parameters !== null || params.parameters !== 'undefined') {
-      getItemsRequest.Resources = params.parameters
+    if (params.resources !== null || params.resources !== 'undefined') {
+      getItemsRequest.Resources = params.resources
     }
 
     if (params.condition !== null || params.condition !== 'undefined') {
