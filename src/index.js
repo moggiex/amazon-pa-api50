@@ -29,8 +29,8 @@ class Api {
       ItemIds: ids
     }
 
-    if (params.parameters !== null || params.parameters !== 'undefined') {
-      getItemsRequest.Resources = params.parameters
+    if (params.resources !== null || params.resources !== 'undefined') {
+      getItemsRequest.Resources = params.resources
     }
 
     if (params.condition !== null || params.condition !== 'undefined') {
@@ -43,14 +43,22 @@ class Api {
           if (err) {
             reject(new Error(err))
           }
-          let getItemsResponse = ProductAdvertisingAPIv1.GetItemsResponse.constructFromObject(data)
-          getItemsResponse = JSON.parse(JSON.stringify(getItemsResponse))
-          resolve(
-            {
-              data: getItemsResponse,
-              response: response
-            }
-          )
+
+          // data can come back as null with an invlaid search param
+          if(!data) {
+            reject(new Error(response.Error))
+
+          } else {
+
+            let getItemsResponse = ProductAdvertisingAPIv1.GetItemsResponse.constructFromObject(data)
+            getItemsResponse = JSON.parse(JSON.stringify(getItemsResponse))
+            resolve(
+              {
+                data: getItemsResponse,
+                response: response
+              }
+            )
+          }
         })
       } catch (ex) {
         reject(ex)
@@ -74,8 +82,8 @@ class Api {
       BrowseNodeIds: nodeIds
     }
 
-    if (params.parameters !== null || params.parameters !== 'undefined') {
-      getBrowseNodesRequest.Resources = params.parameters
+    if (params.resources !== null || params.resources !== 'undefined') {
+      getBrowseNodesRequest.Resources = params.resources
     }
 
     return new Promise((resolve, reject) => {
@@ -84,14 +92,21 @@ class Api {
           if (err) {
             reject(new Error(err))
           }
-          let getBrowseNodesResponse = ProductAdvertisingAPIv1.GetBrowseNodesResponse.constructFromObject(data)
-          getBrowseNodesResponse = JSON.parse(JSON.stringify(getBrowseNodesResponse))
-          resolve(
-            {
-              data: getBrowseNodesResponse,
-              response: response
-            }
-          )
+
+          // data can come back as null with an invlaid search param
+          if(!data) {
+            reject(new Error(response.Error))
+
+          } else {
+            let getBrowseNodesResponse = ProductAdvertisingAPIv1.GetBrowseNodesResponse.constructFromObject(data)
+            getBrowseNodesResponse = JSON.parse(JSON.stringify(getBrowseNodesResponse))
+            resolve(
+              {
+                data: getBrowseNodesResponse,
+                response: response
+              }
+            )
+          }
         })
       } catch (ex) {
         reject(ex)
@@ -116,8 +131,8 @@ class Api {
       ASIN: asin
     }
 
-    if (params.parameters !== null || params.parameters !== 'undefined') {
-      getVariationsRequest.Resources = params.parameters
+    if (params.resources !== null || params.resources !== 'undefined') {
+      getVariationsRequest.Resources = params.resources
     }
     if (params.condition !== null || params.condition !== 'undefined') {
       getVariationsRequest.Condition = params.condition
@@ -129,14 +144,21 @@ class Api {
           if (err) {
             reject(new Error(err))
           }
-          let variationsResponse = ProductAdvertisingAPIv1.GetVariationsResponse.constructFromObject(data)
-          variationsResponse = JSON.parse(JSON.stringify(variationsResponse))
-          resolve(
-            {
-              data: variationsResponse,
-              response: response
-            }
-          )
+
+          // data can come back as null with an invlaid search param
+          if(!data) {
+            reject(new Error(response.Error))
+
+          } else {
+            let variationsResponse = ProductAdvertisingAPIv1.GetVariationsResponse.constructFromObject(data)
+            variationsResponse = JSON.parse(JSON.stringify(variationsResponse))
+            resolve(
+              {
+                data: variationsResponse,
+                response: response
+              }
+            )
+          }
         })
       } catch (ex) {
         reject(ex)
@@ -161,8 +183,8 @@ class Api {
       Keywords: keywords
     }
 
-    if (params.parameters !== null || params.parameters !== 'undefined') {
-      getSearchItemsRequest.Resources = params.parameters
+    if (params.resources !== null || params.resources !== 'undefined') {
+      getSearchItemsRequest.Resources = params.resources
     }
     if (params.searchIndex !== null || params.searchIndex !== 'undefined') {
       getSearchItemsRequest.SearchIndex = params.searchIndex
@@ -177,14 +199,20 @@ class Api {
           if (err) {
             reject(new Error(err))
           }
-          let searchItemsResponse = ProductAdvertisingAPIv1.SearchItemsResponse.constructFromObject(data)
-          searchItemsResponse = JSON.parse(JSON.stringify(searchItemsResponse))
-          resolve(
-            {
-              data: searchItemsResponse,
-              response: response
-            }
-          )
+          // data can come back as null with an invlaid search param
+          if(!data) {
+            reject(new Error(response.Error))
+
+          } else {
+            let searchItemsResponse = ProductAdvertisingAPIv1.SearchItemsResponse.constructFromObject(data)
+            searchItemsResponse = JSON.parse(JSON.stringify(searchItemsResponse))
+            resolve(
+              {
+                data: searchItemsResponse,
+                response: response
+              }
+            )
+          }
         })
       } catch (ex) {
         reject(ex)
